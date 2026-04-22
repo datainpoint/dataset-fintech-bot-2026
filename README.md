@@ -165,6 +165,10 @@ Dataset: Fintech BOT 2026.
     - 目標變數：`sales`
 - 概述：資料集包含零售商在 5 年期間（2013-01-01 至 2017-12-31），分布於不同地點的 10 間分店中 50 種特定商品的每日銷售數據。目標是預測未來三個月（2018 年 1 月至 3 月）內每種商品在每間商店的每日銷量。
 
-## 附錄：資料集檢視
+## 附錄一：資料集下載
 
-請參考附錄 [dataset_describe.ipynb](dataset_describe.ipynb)。
+請參考 [Google 雲端硬碟](https://drive.google.com/drive/folders/1TDTJFM0lPxfpD_usCEoSutyDyy3V9428?usp=drive_link)
+
+## 附錄二：資料集檢視
+
+請參考 [dataset_describe.ipynb](dataset_describe.ipynb)

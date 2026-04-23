@@ -1,28 +1,18 @@
+---
+header-includes:
+  - \usepackage{fontspec}
+  - \setmainfont{Heiti SC}  # Or another CJK-supporting font installed on your system
+  - \usepackage{xeCJK}
+  - \setCJKmainfont{Heiti SC}
+  - \XeTeXlinebreaklocale "zh"   # Set line breaks for Chinese
+  - \XeTeXlinebreakskip = 3pt plus 1pt
+  - \usepackage{geometry}
+  - \geometry{top=1in, inner=1in, outer=1in, bottom=1in, headheight=3ex, headsep=2ex}
+---
+
 # dataset-fintech-bot-2026 臺灣銀行委辦 AI 人才進階訓練
 
 Dataset: Fintech BOT 2026.
-
-## 題目說明
-
-1. Bank customer value estimation 銀行客戶價值估計模型。
-
-假設你在一間銀行的數位金融部門任職，你主要管理的產品是數位錢包，你的任務是透過數位錢包的營運資料來建立一個「客戶價值估計模型」，主要用於預測數位錢包使用者的終身價值，數位金融部門需要識別哪些客戶具有高的長期貢獻度，以便更精準地分配行銷資源在這些高價值客戶身上。請根據「資料科學管線」的框架以及「專題評分標準」撰寫一份 Jupyter Notebook 完成這個任務。
-
-2. Bank customer churn prediction 銀行客戶流失預測模型。
-
-假設你在一間銀行的客戶關係管理部門任職，你的任務是透過一份客戶行為特徵資料，建立一個「流失預測模型」，預測每個客戶的流失機率，並且提前識別出「有流失傾向」的客戶，就能透過優惠或服務來挽留他們，在競爭激烈的銀行業中，獲取新客戶的成本遠高於維護舊客戶。請根據「資料科學管線」的框架以及「專題評分標準」撰寫一份 Jupyter Notebook 完成這個任務。
-
-3. Loss given default, LGD prediction 銀行房貸授信違約預測模型。
-
-假設你在一間銀行的風險管理部門任職，你的任務是希望借鏡美國知名金融科技公司 LendingClub 的貸款資料，建立一個「違約損失率模型」，預測每筆貸款在違約後的損失比例，銀行的風險管理愈精準，就能更有效地分配風險準備金，降低營運成本。請根據「資料科學管線」的框架以及「專題評分標準」撰寫一份 Jupyter Notebook 完成這個任務。
-
-4. Bank product recommendation 銀行產品推薦模型。
-
-假設你在一間西班牙銀行 Santander Bank 的資料科學團隊工作，你的任務是透過客戶每月行為資料（從 2015 年 1 月至 2016 年 5 月，長達 1.5 年），建立一個「產品推薦模型」，藉此提升客戶滿意度與銀行的交叉銷售效率，請根據「資料科學管線」的框架以及「專題評分標準」撰寫一份 Jupyter Notebook 完成這個任務。
-
-5. Web traffic/Store sales time series prediction 流量/銷量時間序列預測模型。
-
-假設你在一間銀行的分行管理部門任職，你的任務是希望借鏡零售商店的每日銷售資料，建立一個「時間序列預測模型」，目的在於考慮顯著的季節、節慶與工作日的特性，協助銀行優化分行人力資源管理，在避免人力不足與提高人力運用效率之間取得平衡，請根據「資料科學管線」的框架以及「專題評分標準」撰寫一份 Jupyter Notebook 完成這個任務。
 
 ## 專題評分標準
 
@@ -32,67 +22,103 @@ Dataset: Fintech BOT 2026.
 - 模型與機器學習（30%）：學員是否妥善運用了統計分析、演算法、資料探勘或機器學習等方法論？是否確實生成指定的輸出格式？是否有運用恰當地評估指標佐證模型的表現？
 - 應用性配適評估（30%）：學員是否從題目、資料集與實作中提出與行內業務相關的可能延伸應用？該延伸應用提案是否合乎行內業務發展趨勢？是否合乎內部規範與外部監管？
 
+## 題目
+
+1. Bank customer churn prediction 銀行客戶流失預測
+
+你是任職於西班牙銀行 Santander Bank 的資料科學家，在規定時間內（3 小時）完成資料清洗，並建立一個預測效能優於隨機猜測的基礎模型。
+
+- 需求：
+    - 找出並刪除資料集中所有「常數特徵」（所有值都一樣的欄位）以及「重複特徵」（欄位內容完全相同的特徵）。
+    - 利用 Undersampling 或 SMOTE 技術，將原本 4% 的少數類樣本調整至較平衡的比例。
+    - 針對過多的特徵進行主成分分析降維，或利用 Feature Importance 選出前 30 個關鍵變數。
+    - 使用 Random Forest、Logistic Regression 或其他分類器建立模型。
+    - 請計算 AUC 並畫出混淆矩陣。
+- 預期產出：
+    - 清理後的特徵清單。
+    - 模型在測試資料上的 AUC > 0.65
+
+2. Bank customer default risk prediction 銀行客戶授信違約預測
+
+你是任職於 Home Credit 的風管分析師，在規定時間內（3 小時）使用 application_train.csv 與 bureau.csv，建立一個預測違約率（PD）的模型。
+
+- 需求：
+    - 計算每位客戶在 bureau.csv 中的「過往貸款總筆數」與「目前總欠款金額」，並將其合併回 application_train.csv。
+    - application_train.csv 中有三個外部評分欄位 EXT_SOURCE_1/2/3，請處理其中的缺失值（用中位數填補或設為特定值）。
+    - 使用 Random Forest 或 Logistic Regression 或其他分類器建立模型。
+    - 請計算 AUC，並針對預測結果進行機率分組，觀察高機率組的實際違約比例。
+- 預期產出：
+    - 合併完成的特徵矩陣。
+    - 機率分組 vs. 實際違約比例。
+    - 模型在測試資料上的 AUC > 0.65
+
+3. Loss given default(LGD) prediction 銀行客戶授信違約損失率預測
+
+你是任職於銀行風險管理部門的風管分析師，在規定時間內（3 小時）針對已經違約的貸款，建立一個違約損失率（LGD）模型。
+
+- 需求：
+    - 樣本僅篩選 loan_status 為 "Charged Off" 的觀測值，因為只有違約的人才有 LGD
+    - LGD 計算方式：$LGD = 1 - (recoveries / loan_amnt)$
+    - 若 LGD 計算結果小於 0（超額回收）或大於 1，請將其強制修正在 [0, 1] 區間。
+    - 選取核貸時可得的特徵，不要使用例如 total_rec_int 或 last_pymnt_d 作為特徵，因為這些是違約過程中產生的數據，核貸時無法預知。
+    - 將類別變數進行 One-Hot Encoding 或 Ordinal Encoding
+    - 建立回歸模型。
+- 預期產出：
+    - LGD 直方圖：觀察大多數違約者的損失率為何。
+    - 模型在驗證資料的 MAE 應低於單純用平均值預測的誤差。
+
+4. Bank product recommendation 銀行產品推薦
+
+假設你在西班牙銀行 Santander Bank 的資料科學團隊工作，你的任務是透過客戶每月行為資料（從 2015 年 1 月至 2016 年 5 月，長達 1.5 年），建立一個產品推薦模型，藉此提升客戶滿意度與銀行的交叉銷售效率。
+
+5. Customer Transaction Prediction 交易預測
+
 ## 實作資料集概述
 
-1. FinTech Customer Life Time Value (LTV) Dataset
+1. Santander Customer Satisfaction
 
-- 來源：<https://www.kaggle.com/datasets/harunrai/fintech-customer-life-time-value-ltv-dataset>
-- 檔名：digital_wallet_ltv_dataset.csv
-- 資料集特性 ：多變量、序列型
-- 領域：商業、金融科技
-- 相關任務：迴歸、分群
-- 特徵類型：實數、整數、類別
-- 樣本數：7,000
-- 特徵數：20
-    - Customer ID: 用戶唯一識別碼
-    - Age / Gender / Location: 用戶的基礎背景資料
-    - Account Level: 用戶帳戶類型或等級
-    - Total Transactions: 總交易次數
-    - Recency: 最近一次交易距今的天數
-    - Frequency: 交易發生的頻率
-    - Monetary Value: 歷史平均或總交易金額
-    - App Usage Pattern: 應用程式登入頻率、停留時間
-    - Engagement Metrics: 用戶點擊率或特定功能的參與深度
-    - Last Interaction: 最後一次與平台互動的時間
-    - Support Interactions: 用戶聯繫客服的次數
-    - Churn Indicator: 用戶流失風險或不活躍指標
-    - 目標變數：`LTV`
-- 概述：資料集擷取了用戶的人口統計特徵、交易歷史、參與度指標以及應用程式的使用模式，協助金融科技公司預測數位錢包用戶的客戶終身價值 (LTV)準確預測 LTV 能讓企業識別高價值客戶、優化行銷預算分配並降低客戶獲取成本。
+- 來源：<https://www.kaggle.com/competitions/santander-customer-satisfaction>
+- 檔名與概述：從第一線的客服團隊到高階管理層，客戶滿意度始終是衡量成功的關鍵指標。不快樂的客戶不會留下來；更重要的是，這些不滿意的客戶在離開之前，鮮少會主動表達他們的反感。Santander Bank 希望在客戶關係建立的初期，就辨識出那些潛在的不滿意客戶。若能做到這一點，就能在情況惡化之前，採取主動措施來提升客戶的滿意度。利用數百個去識別化（匿名化）的特徵，來預測客戶對其銀行服務體驗是感到滿意還是不滿意。
+    - sample_submission.csv
+    - test.csv
+    - train.csv
+- 樣本數與特徵數：
 
-2. Banking Customer Churn Prediction Dataset
+|資料表|樣本數|特徵數|
+|-----|----:|----:|
+|train|76,020|371|
+|test|75,818|370|
 
-- 來源：<https://www.kaggle.com/datasets/saurabhbadole/bank-customer-churn-prediction-dataset>
-- 檔名：Churn_Modelling.csv
-- 資料集特性：多變量
-- 領域：商業、金融
-- 相關任務：分類
-- 特徵類型：實數、整數、類別
-- 樣本數：10,000
-- 特徵數：14
-    - RowNumber: 資料列編號
-    - CustomerId: 客戶唯一識別碼（ID）
-    - Surname: 客戶姓氏
-    - Geography: 居住地（如 France, Spain, Germany）
-    - Gender: 性別
-    - Age: 年齡
-    - CreditScore: 信用分數
-    - Tenure: 客戶年資（已加入該銀行的年份）
-    - Balance: 帳戶餘額
-    - NumOfProducts: 使用該銀行的產品數量
-    - HasCrCard: 是否持有信用卡 (0: 否，1: 是)
-    - IsActiveMember: 是否為活躍會員 (0: 否，1: 是)
-    - EstimatedSalary: 預估年收入
-    - 目標變數：`Exited`
-- 概述：資料集包含客戶的人口統計資訊、銀行帳戶信用狀況以及在銀行的活動狀態，協助預測銀行客戶是否會主動停止使用該銀行的服務（流失）。對於銀行業而言，識別潛在流失客戶對於制定留存策略至關重要。
+2. Home Credit Default Risk
+
+- 來源：<https://www.kaggle.com/competitions/home-credit-default-risk>
+- 檔名與概述：
+    - application_{train|test}.csv：這是主表，分為訓練集（含目標變數 TARGET）與測試集（不含目標變數）。內容包含所有貸款申請案的靜態資料，每一列代表一筆貸款申請案。
+    - bureau.csv：包含樣本客戶過往在其他金融機構申請、並回報給聯徵中心 (Credit Bureau) 的所有信用紀錄。針對樣本中的每一筆貸款申請，該客戶過去在聯徵中心有多少筆信用紀錄，此表就會對應顯示多少列。
+    - bureau_balance.csv：聯徵中心過往信用紀錄的每月餘額明細。此表紀錄了回報至聯徵中心的每一筆既往信用紀錄的每月歷史資料。總列數等於（樣本貸款數 × 相關既往信用紀錄數 × 該信用紀錄可觀察的歷史月數）。
+    - POS_CASH_balance.csv：申請人過往在 Home Credit 的 POS 機 (Point of Sales) 貸款與現金貸款的每月餘額快照。此表包含與樣本貸款相關的每一筆 Home Credit 既往信用（消費信貸與現金貸款）的每月歷史紀錄。
+    - credit_card_balance.csv：申請人過往在 Home Credit 的信用卡每月餘額快照。此表包含與樣本貸款相關的每一張 Home Credit 既往信用卡之每月歷史紀錄。
+    - previous_application.csv：包含樣本客戶過往在 Home Credit 申請的所有貸款紀錄。樣本中的每筆貸款若有對應的過往申請案，皆會在此表以獨立的一列呈現。
+    - installments_payments.csv：與樣本貸款相關的 Home Credit 既往已撥款信用之還款歷史紀錄。包含每一筆已繳款紀錄，以及每一筆漏繳紀錄。每一列相當於「一筆分期付款的一次繳款紀錄」或「一次繳款對應的一筆分期付款」。
+    - HomeCredit_columns_description.csv：此檔案包含各個資料檔案中所有欄位的詳細定義與說明。
+- 樣本數與特徵數：
+
+|資料表|樣本數|特徵數|
+|-----|----:|----:|
+|application_train|307,511|122|
+|application_test|48,744|121|
+|bureau|1,716,428|17|
+|bureau_balance|27,299,925|3|
+|POS_CASH_balance|10,001,358|8|
+|credit_card_balance|3,840,312|23|
+|previous_application|1,670,214|37|
+|installments_payments|13,605,401|8|
 
 3. All Lending Club loan data
 
 - 來源：<https://www.kaggle.com/datasets/wordsforthewise/lending-club>
-- 檔名：accepted_2007_to_2018Q4.csv
-- 資料集特型：多變量、時間序列
-- 領域：商業、金融
-- 相關任務：分類、迴歸
-- 特徵類型：實數、整數、類別
+- 檔名與概述：
+    - accepted_2007_to_2018Q4.csv：資料集包含 LendingClub 平台從 2007 年創立至 2018 年第四季的所有貸款申請紀錄。紀錄了每筆貸款從申請、審核、撥款到最終還款或違約的完整生命週期。
 - 樣本數：2,260,701
 - 特徵數：151（151 個特徵中有許多重複或高缺失率的欄位，在此僅列出可能會用到、重要的特徵。）
     - emp_title / emp_length: 職稱與就業年資
@@ -110,22 +136,22 @@ Dataset: Fintech BOT 2026.
     - total_pymnt: 至今收到的總還款金額
     - recoveries: 違約後回收的金額（LGD 建模的關鍵目標）
     - last_pymnt_d: 最後一次還款日期
-    - 目標變數：衍生計算欄位 `funded_amnt - recoveries`
-- 概述：資料集包含 LendingClub 平台從 2007 年創立至 2018 年第四季的所有貸款申請紀錄。紀錄了每筆貸款從申請、審核、撥款到最終還款或違約的完整生命週期。
 
 4. Bank product recommendation
 
 - 來源：<https://www.kaggle.com/competitions/santander-product-recommendation>
-- 檔名：
-    - santander_sample_submission.csv
-    - santander_test_ver2.csv
-    - santander_train_ver2.csv
-- 資料集特性：多元分類、時間序列、推薦系統
-- 領域：商業、金融
-- 相關任務：分類
-- 特徵類型：實數、整數、類別
-- 樣本數：13,647,309
-- 特徵數：48
+- 檔名與概述：資料集包含 Santander 銀行 1.5 年的客戶行為紀錄。目標是根據客戶過去的持有紀錄與人口統計學特徵，預測客戶在 2016 年 6 月會新增哪些金融產品。
+    - sample_submission.csv
+    - test_ver2.csv
+    - train_ver2.csv
+- 樣本數與特徵數：
+
+|資料表|樣本數|特徵數|
+|-----|----:|----:|
+|train_ver2|13,647,309|48|
+|test_ver2|929,615|24|
+
+- 特徵：
     - fecha_dato: 統計日期 (Time-Series key)
     - ncodpers: 客戶唯一代碼
     - ind_empleado: 僱傭指標 (A: 活躍, B: 前員工, F: 退休, N: 非員工, P: 實習生)
@@ -144,26 +170,20 @@ Dataset: Fintech BOT 2026.
     - canal_entrada: 客戶加入渠道
     - indfall: 死亡指標 (S: 是, N: 否)
     - 目標變數：24 個產品目標變數，均為二元變數 (0: 未持有，1: 持有)。包含儲蓄帳戶、信用卡、抵押貸款、養老金等 24 種產品。
-- 概述：資料集包含 Santander 銀行 1.5 年的客戶行為紀錄。目標是根據客戶過去的持有紀錄與人口統計學特徵，預測客戶在 2016 年 6 月會新增哪些金融產品。
 
-5. Store Item Demand Forecasting Challenge
+5. Santander Customer Transaction Prediction
 
-- 來源：<https://www.kaggle.com/competitions/santander-product-recommendation>
-- 檔名：
-    - store_sample_submission.csv
-    - store_test.csv
-    - store_train.csv
-- 資料集特性：單變量、時間序列、多序列
-- 相關任務：回歸、預測
-- 領域：商業、零售
-- 特徵類型：日期、類別、整數
-- 樣本數：913,000
-- 特徵數：4
-    - date: 交易日期（YYYY-MM-DD）
-    - store: 商店識別碼（整數 1-10）
-    - item: 商品識別碼（整數 1-50）
-    - 目標變數：`sales`
-- 概述：資料集包含零售商在 5 年期間（2013-01-01 至 2017-12-31），分布於不同地點的 10 間分店中 50 種特定商品的每日銷售數據。目標是預測未來三個月（2018 年 1 月至 3 月）內每種商品在每間商店的每日銷量。
+- 來源：<https://www.kaggle.com/competitions/santander-customer-transaction-prediction>
+- 檔名與概述：Santander 銀行試圖透過 200 個匿名特徵識別哪些客戶在未來會進行特定的交易，不論交易金額的大小。
+    - sample_submission.csv
+    - test.csv
+    - train.csv
+- 樣本數與特徵數：
+
+|資料表|樣本數|特徵數|
+|-----|----:|----:|
+|train|200,000|202|
+|test|200,000|201|
 
 ## 附錄一：資料集下載
 

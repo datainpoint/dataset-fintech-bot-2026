@@ -10,18 +10,39 @@ header-includes:
   - \geometry{top=1in, inner=1in, outer=1in, bottom=1in, headheight=3ex, headsep=2ex}
 ---
 
-# dataset-fintech-bot-2026 臺灣銀行委辦 AI 人才進階訓練
+# 臺灣銀行委辦 AI 人才進階訓練期末專題
 
-Dataset: Fintech BOT 2026.
+郭耀仁 <yaojenkuo@ntu.edu.tw>
 
-## 專題評分標準
+## 專題實作項目
 
-- 專題組織性（10%）：Jupyter Notebook 中的程式碼是否有整理為函數、類別或模組的型態？重現這個專題的前置作業或步驟是否簡單便捷？
-- 預定產出（10%）：學員是否有依題目需求達成預定產出、目標？
-- 資料工程（15%）：學員是否能妥善整合結構化與非結構化資料？資料載入、清理與轉置的環節是否妥善處理？面對資料中可能存在的缺失值或雜訊，處理邏輯是否合理？
-- 溝通（15%）：學員是否能用 3 到 5 分鐘的時間讓聽眾知道專題的重點與亮點？圖表是否幫助聽眾理解？
-- 機器學習（25%）：學員是否妥善運用了機器學習的知識？是否有運用機器學習技巧處理多觀測值、多維度、類別不平衡或交叉驗證等難題？是否有運用恰當的評估指標？
-- 應用性評估（25%）：學員是否從題目、資料集與實作中提出與行內業務相關的可能延伸應用？該延伸應用提案是否合乎行內業務發展趨勢？是否合乎內部規範與外部監管？
+1. 上傳副檔名為 .ipynb 的 Jupyter Notebook，學員可以在 Google Colab 完成之後，點選 File > Download > Download .ipynb（由課程講師評分，佔分 75%）
+2. 上傳副檔名為 .pptx 的 Power Point 簡報，採用台灣銀行模板。
+3. 使用 2. 的簡報檔案進行 10 分鐘的簡報（由聆聽主管評分，佔分 25%）。
+
+## 評分標準
+
+- 課程講師評分
+    - 預期產出（10%）：學員是否有依題目需求達成預期產出？
+    - 專題組織性（15%）：學員是否能用精練的文字讓讀者快速理解專題的重點與亮點？圖表是否幫助讀者理解？學員是否從題目、資料集與實作中提出與業務有關的可能延伸應用？
+    - 資料工程（20%）：Jupyter Notebook 中的程式碼是否有整理為函數、類別或模組的型態？重現這個專題的前置作業或步驟是否簡單便捷？學員是否能妥善整合結構化與非結構化資料？是否妥善運用資料載入、清理與轉置的技巧？面對資料中可能存在的缺失值或雜訊，處理邏輯是否合理？
+    - 機器學習（30%）：學員是否妥善運用了機器學習的知識？是否有運用機器學習技巧處理多觀測值、多特徵、類別不平衡或交叉驗證等難題？是否有運用恰當的評估指標？
+- 聆聽主管評分
+    - 簡報表達（25%）：學員台風是否穩健？能否在規定時間內（10 分鐘）清楚表達專題的挑戰、洞察與發想等內容？有沒有讓聽眾耳目一新的潛力？是否有提出與業務有關、可行的創新想法？
+
+\newpage
+
+## 資料集授權聲明
+
+- GENERAL COMPETITION RULES
+    - COMPETITION DATA. "Competition Data" means the data or datasets available from the Competition Website for the purpose of use in the Competition, including any prototype or executable code provided on the Competition Website.
+        - Data Access and Use. Unless otherwise restricted under the Competition Specific Rules above, after your acceptance of these Rules, you may access and use the Competition Data for the purposes of the Competition, participation on Kaggle Website forums, academic research and education, and other non-commercial purposes.
+- CODE SHARING
+    - Participants are permitted to publicly share source or executable code developed in connection with or based upon the Data, or otherwise relevant to the Competition, provided that such sharing does not violate the intellectual property rights of any third party. By so sharing, the sharing Participant is thereby deemed to have licensed the shared code under the MIT License (an open source software license commonly described at ).
+
+Source: [Competition Rules](https://www.kaggle.com/competitions)
+
+\newpage
 
 ## 題目與資料集
 
@@ -40,10 +61,7 @@ Dataset: Fintech BOT 2026.
     - 混淆矩陣。
     - 符合 sample_submission.csv 格式的預測值。
     - 模型在驗證資料上的 AUC > 0.65
-
----
-
-- 來源：<https://www.kaggle.com/competitions/santander-customer-satisfaction>
+- 來源：Soraya_Jimenez and Will Cukierski. Santander Customer Satisfaction. <https://kaggle.com/competitions/santander-customer-satisfaction>, 2016. Kaggle.
 - 檔名與概述：從第一線的客服團隊到高階管理層，客戶滿意度始終是衡量成功的關鍵指標。不快樂的客戶不會留下來；更重要的是，這些不滿意的客戶在離開之前，鮮少會主動表達他們的反感。Santander Bank 希望在客戶關係建立的初期，就辨識出那些潛在的不滿意客戶。若能做到這一點，就能在情況惡化之前，採取主動措施來提升客戶的滿意度。利用數百個去識別化（匿名化）的特徵，來預測客戶對其銀行服務體驗是感到滿意還是不滿意。
     - sample_submission.csv
     - test.csv
@@ -54,6 +72,8 @@ Dataset: Fintech BOT 2026.
 |-----|----:|----:|
 |train|76,020|371|
 |test|75,818|370|
+
+\newpage
 
 2. Home Credit Default Risk
 
@@ -69,9 +89,6 @@ Dataset: Fintech BOT 2026.
     - 機率分組 vs. 實際違約比例
     - 符合 sample_submission.csv 格式的預測值。
     - 模型在驗證資料上的 AUC > 0.65
-
----
-
 - 來源：<https://www.kaggle.com/competitions/home-credit-default-risk>
 - 檔名與概述：
     - application_{train|test}.csv：這是主表，分為訓練資料（含目標變數 TARGET）與測試資料（不含目標變數）。內容包含所有貸款申請案的靜態資料，每一列代表一筆貸款申請案。
@@ -96,13 +113,15 @@ Dataset: Fintech BOT 2026.
 |previous_application|1,670,214|37|
 |installments_payments|13,605,401|8|
 
+\newpage
+
 3. All Lending Club loan data
 
 你是任職於 Lending Club 風險管理部門的風管分析師，請在規定時間內針對已經違約的貸款案件，建立一個違約損失率（LGD）模型。
 
 - 需求：
     - 樣本僅篩選 loan_status 為 "Charged Off" 的觀測值，因為只有違約的人才有 LGD
-    - LGD 計算方式：$LGD = 1 - (recoveries / loan_amnt)$
+    - LGD 計算方式：`LGD = 1 - (recoveries / loan_amnt)` 
     - 若 LGD 計算結果小於 0（超額回收）或大於 1，請將其強制修正在 [0, 1] 區間。
     - 選取核貸時可得的特徵，不要使用例如 total_rec_int 或 last_pymnt_d 作為特徵，因為這些是違約過程中產生的數據，核貸時無法預知。
     - 將類別變數進行 One-Hot Encoding 或 Ordinal Encoding
@@ -111,9 +130,6 @@ Dataset: Fintech BOT 2026.
     - LGD 分佈直方圖（Histogram）：觀察違約者的損失率分佈。
     - (m, 2) 外型的預測值，m 為驗證資料列數（可以用 20-30% 作為驗證比例），第一個欄位是 `id`、第二個欄位是 `LGD`
     - 模型在驗證資料的 MSE/MAE 應低於單純用平均值預測（Baseline model）的誤差。
-
----
-
 - 來源：<https://www.kaggle.com/datasets/wordsforthewise/lending-club>
 - 檔名與概述：
     - accepted_2007_to_2018Q4.csv：資料集包含 LendingClub 平台從 2007 年創立至 2018 年第四季的所有貸款申請紀錄。紀錄了每筆貸款從申請、審核、撥款到最終還款或違約的完整生命週期。
@@ -134,6 +150,8 @@ Dataset: Fintech BOT 2026.
     - total_pymnt: 至今收到的總還款金額
     - recoveries: 違約後回收的金額（LGD 建模的關鍵目標）
     - last_pymnt_d: 最後一次還款日期
+
+\newpage
 
 4. Bank product recommendation
 
@@ -163,6 +181,7 @@ Dataset: Fintech BOT 2026.
     - sample_submission.csv
     - test_ver2.csv
     - train_ver2.csv
+
 - 樣本數與特徵數：
 
 |資料表|樣本數|特徵數|
@@ -190,38 +209,9 @@ Dataset: Fintech BOT 2026.
     - indfall: 死亡指標 (S: 是, N: 否)
     - 目標變數：24 個產品目標變數，均為二元變數 (0: 未持有，1: 持有)。包含儲蓄帳戶、信用卡、抵押貸款、養老金等 24 種產品。
 
-5. Santander Customer Transaction Prediction
+\newpage
 
-你是任職於 Santander Bank 的產品經理，請在規定時間內建立一個分類模型，預測客戶是否會在未來進行特定的金融交易。
-
-- 需求：
-    - 計算特徵間的相關係數。
-    - 確認資料集是否有缺失值
-    - 處理類別不平衡（10% vs. 90%）的樣本比例問題。
-    - 使用三種以上的分類器（不限 Scikit-Learn 模組）建立模型並評估擇最佳模型或集成模型。
-    - 產出 Feature Importance 排行，找出對交易預測貢獻度最高的前 10 個匿名特徵。
-    - 嘗試將這 10 個匿名特徵進行標準化(StandardScaler/MinMaxScaler)處理，觀察 AUC 是否有提升。
-- 預期產出：
-    - 前十 Feature Importance 排行。
-    - 符合 sample_submission.csv 格式的預測值。
-    - 模型在驗證資料上的 AUC > 0.75
-    - 匿名特徵建模的心得，在不了解業務邏輯時，如何量測特徵的重要性？
-
----
-
-- 來源：<https://www.kaggle.com/competitions/santander-customer-transaction-prediction>
-- 檔名與概述：Santander 銀行試圖透過 200 個匿名特徵識別哪些客戶在未來會進行特定的交易，不論交易金額的大小。
-    - sample_submission.csv
-    - test.csv
-    - train.csv
-- 樣本數與特徵數：
-
-|資料表|樣本數|特徵數|
-|-----|----:|----:|
-|train|200,000|202|
-|test|200,000|201|
-
-6. （備取）Santander Value Prediction
+5. Santander Value Prediction
 
 你是任職於 Santander Bank 的客戶關係經理，請在規定時間內建立一個能夠預測客戶「交易價值」的模型。
 
@@ -240,9 +230,6 @@ Dataset: Fintech BOT 2026.
     - 符合 sample_submission.csv 格式的預測值。
     - 模型在驗證資料上的 RMSLE(Root Mean Squared Logarithmic Error)優於直接取平均值的 Baseline
     - 匿名特徵建模的心得，在不了解業務邏輯時，如何量測特徵的重要性？
-
----
-
 - 來源：<https://www.kaggle.com/competitions/santander-value-prediction-challenge>
 - 檔名與概述：Santander Bank 不僅要辨識出客戶對金融服務的需求，還要進一步判斷客戶交易的具體金額或價值，識別每位潛在客戶的交易價值，這是 Santander Bank 在實現大規模個人化服務必須精準踏出的第一步。
     - sample_submission.csv
@@ -255,6 +242,7 @@ Dataset: Fintech BOT 2026.
 |train|4,459|4,993|
 |test|49,342|4,992|
 
+\newpage
 
 ## 附錄：資料集下載
 
